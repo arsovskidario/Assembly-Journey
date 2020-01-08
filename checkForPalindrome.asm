@@ -3,7 +3,7 @@ model small
 .stack 256h
 	
 .data
-	array db 6 dup (?)
+	array db 10 dup (?)
 	
 .code
 	main:
