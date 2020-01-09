@@ -16,10 +16,13 @@ model small
 		xor si,si
 		input:
 			int 21h
+			cmp al,13h
+			je setup_function
 			mov arr[si],al
 			inc si 	
 			loop input
 		
+		setup_function:
 		xor si,si
 		mov cx,14
 		find_substr:
