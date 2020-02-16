@@ -1,0 +1,41 @@
+masm
+model small
+.data
+
+.code
+	main:
+		mov ax,@data
+		mov ds,ax
+		
+		mov cx,15
+		xor dx,dx ; counter for encounters
+		mov ah,01h
+		input:
+			xor bx,bx
+			int 21h
+			cmp al,13h
+			je exit
+			cmp al,'i'
+			jne continue_loop
+			
+			inc bx 
+			dec cx 
+			
+			int 21h
+			cmp al,13h
+			je exit
+			cmp al,'s'
+			jne continue_loop
+			
+			inc dx
+			
+			continue_loop:
+			loop input 
+	
+		exit:
+			mov ah,02h  
+			add dl,30h
+			int 21h
+			mov ax,4c00h
+			int 21h 
+	end main 
